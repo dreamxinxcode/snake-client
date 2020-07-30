@@ -16,6 +16,7 @@ const connect = () => {
   });
   conn.on('connect', () => {
     conn.write('Name: BL');
+    //conn.write('Move: right')
   });
   return conn;
 };
