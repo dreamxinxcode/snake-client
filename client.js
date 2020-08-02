@@ -1,24 +1,19 @@
 const net = require('net');
+const { IP, PORT } = require('./constants');
 
-// Establish connection with the game server
+
 const connect = function() {
   const conn = net.createConnection({
-    host: '192.168.1.64',
-    port: 50541,
+    host: IP,
+    port: PORT
   });
-  conn.on('connect', (connect) => {
-    console.log('Successfully connected to game server');
-  });
-  conn.on('connect', (connect) => {
-    conn.write("Name: BL");
-    // setInterval(()=>{conn.write("Move: up")}, 100);
-  });
-  conn.on('data', (data) => {
-    console.log('you ded cuz you idled');
-  });
-  // interpret incoming data as text
   conn.setEncoding('utf8');
+  conn.on('connect', () => {
+    console.log('Welcome to the Snake Pit!');
+    conn.write('Name: BL');
+  });
+
   return conn;
 };
 
-module.exports = connect;
+module.exports = {connect};
