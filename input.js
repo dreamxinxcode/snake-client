@@ -18,6 +18,12 @@ const handleUserInput = (key) => {
   if (key === '\u0064') { // d
     connection.write("Move: right");
   }
+  if (key === '1') {
+    connection.write("Say: Come here! >:)");
+  }
+  if (key === '2') {
+    connection.write("Say: You're going down!");
+  }
 };
 
 const setupInput = function(conn) {
