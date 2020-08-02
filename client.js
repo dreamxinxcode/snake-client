@@ -1,24 +1,26 @@
 const net = require('net');
 
 // Establish connection with the game server
-const connect = () => {
+const connect = function() {
   const conn = net.createConnection({
     host: '192.168.1.64',
-    port: 50541
+    port: 50541,
   });
-  conn.setEncoding('utf8');
-  // attach an event handler to handle incoming data and console log it for the player.
-  conn.on('data', (data) => {
-    console.log(data);
-  });
-  conn.on('connect', () => {
+  conn.on('connect', (connect) => {
     console.log('Successfully connected to game server');
   });
-  conn.on('connect', () => {
-    conn.write('Name: BL');
-    //conn.write('Move: right')
+  conn.on('connect', (connect) => {
+    conn.write("Name: BL");
+    // setInterval(()=>{conn.write("Move: up")}, 100);
   });
+  conn.on('data', (data) => {
+    console.log('you ded cuz you idled');
+  });
+  // interpret incoming data as text
+  conn.setEncoding('utf8');
   return conn;
 };
+
+connect();
 
 module.exports = connect;
